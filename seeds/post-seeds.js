@@ -3,22 +3,22 @@ const {Post} = require('../models')
 const postData = [
     {
         title: 'Title 1',
-        post_url: 'google.com',
+        post_text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
         user_id: 3
     },
     {
         title: 'Title 2',
-        post_url: 'facebook.com',
+        post_text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
         user_id: 2
     },
     {
         title: 'Title 3',
-        post_url: 'github.com',
+        post_text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
         user_id: 1
     },
     {
         title: 'Title 4',
-        post_url: 'youtube.com',
+        post_text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
         user_id: 2
     },
 ]
