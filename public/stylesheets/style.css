@@ -17,9 +17,6 @@ header {
     background-color: var(--secondary-color) ;
     display: flex;
     justify-content: space-between;
-    flex-wrap: wrap;
-    top: 0;
-    z-index: 9999;
 }
 
 header h1 {
@@ -64,11 +61,46 @@ header nav ul li a:hover {
 
 .post {
     margin: 10px;
-    padding: 10px;
-    border: solid black;
+    /* padding: 10px; */
+    border: solid var(--secondary-color);
 }
 
-.details {
+.post-details {
     font-size: 12px;
+    padding-top: 10px;
+}
+
+.post-title {
+    background-color: var(--secondary-color);
+    padding: 5px;
+}
+
+.post-text {
+    padding: 5px;
+}
+
+.title-text {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: bolder;
+    font-size: 20px
+}
+
+.login {
+    display: flex;
+    justify-content: center;
     padding: 10px;
+}
+
+form {
+    padding: 10px;
+}
+
+.loginBtn {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    padding: 3px;
+    margin-top: 10px;
+    width: 100%;
+    font-weight: bolder;
 }
