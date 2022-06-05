@@ -21,6 +21,9 @@ router.get('/', (req, res) => {
 
 router.get('/:id', (req, res) => {
     User.findOne({
+        where: {
+            id: req.params.id
+        },
         include: [{
             model: Post,
             attributes: ['id', 'title', 'post_text']
