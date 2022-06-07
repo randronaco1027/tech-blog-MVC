@@ -21,7 +21,7 @@ async function login(event) {
     }
 }
 
-async function login(event) {
+async function signup(event) {
     event.preventDefault()
 
     const username = document.querySelector('#newUsername').value.trim()
@@ -47,4 +47,4 @@ async function login(event) {
 
 document.querySelector('.login-form').addEventListener('submit', login)
 
-document.querySelector('.signup-form').addEventListener('submit', login)
+document.querySelector('.signup-form').addEventListener('submit', signup)
