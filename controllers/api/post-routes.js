@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const {Post, User} = require('../../models')
+const { Post, User } = require('../../models')
 
 router.get('/', (req, res) => {
     Post.findAll({
@@ -8,11 +8,11 @@ router.get('/', (req, res) => {
             attributes: ['id', 'username', 'password']
         }
     })
-    .then(postData => res.json(postData))
-    .catch(err => {
-        console.log(err)
-        res.status(500).json(err)
-    })
+        .then(postData => res.json(postData))
+        .catch(err => {
+            console.log(err)
+            res.status(500).json(err)
+        })
 })
 
 router.get('/:id', (req, res) => {
@@ -20,16 +20,39 @@ router.get('/:id', (req, res) => {
         where: {
             id: req.params.id
         },
-        include: {
-            model: User,
-            attributes: ['id', 'username', 'password']
-        }
+        attributes: [
+            'id',
+            'title',
+            'post_text',
+            'created_at'
+        ],
+        include: [
+            {
+                model: Comment,
+                attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+                include: {
+                    model: User,
+                    attributes: ['username']
+                }
+            },
+            {
+                model: User,
+                attributes: ['username']
+            }
+        ]
     })
-    .then(postData => res.json(postData))
-    .catch(err => {
-        console.log(err)
-    }) 
-})
+        .then(dbPostData => {
+            if (!dbPostData) {
+                res.status(404).json({ message: 'No post found with this id' });
+                return;
+            }
+            res.json(dbPostData);
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+        });
+});
 
 router.post('/', (req, res) => {
     Post.create({
@@ -37,10 +60,10 @@ router.post('/', (req, res) => {
         post_text: req.body.post_text,
         user_id: req.body.user_id
     })
-    .then(postData => res.json(postData))
-    .catch(err => {
-        console.log(err)
-    }) 
+        .then(postData => res.json(postData))
+        .catch(err => {
+            console.log(err)
+        })
 })
 
 router.put('/:id', (req, res) => {
@@ -55,10 +78,10 @@ router.put('/:id', (req, res) => {
             }
         }
     )
-    .then(postData => res.json(postData))
-    .catch(err => {
-        console.log(err)
-    }) 
+        .then(postData => res.json(postData))
+        .catch(err => {
+            console.log(err)
+        })
 })
 
 router.delete('/:id', (req, res) => {
@@ -67,10 +90,10 @@ router.delete('/:id', (req, res) => {
             id: req.params.id
         }
     })
-    .then(postData => res.json(postData))
-    .catch(err => {
-        console.log(err)
-    }) 
+        .then(postData => res.json(postData))
+        .catch(err => {
+            console.log(err)
+        })
 })
 
 module.exports = router

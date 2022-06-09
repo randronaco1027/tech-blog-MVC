@@ -20,17 +20,17 @@ router.get('/', (req, res) => {
             }
         ]
     })
-    .then(postData => {
-        const posts = postData.map(post => post.get({ plain: true }))
-        res.render('homepage', {
-            posts,
-            // loggedIn: req.session.loggedIn
+        .then(postData => {
+            const posts = postData.map(post => post.get({ plain: true }))
+            res.render('homepage', {
+                posts,
+                loggedIn: req.session.loggedIn
+            })
         })
-    })
-    .catch(err => {
-        console.log(err)
-        res.status(500).json(err)
-    })
+        .catch(err => {
+            console.log(err)
+            res.status(500).json(err)
+        })
 })
 
 router.get('/post/:id', (req, res) => {
@@ -54,22 +54,22 @@ router.get('/post/:id', (req, res) => {
             }
         ]
     })
-    .then(postData => {
-        if(!postData) {
-            res.status(404).json({ message: 'No post found with this id'})
-            return
-        }
-        const post = postData.get({plain: true})
+        .then(postData => {
+            if (!postData) {
+                res.status(404).json({ message: 'No post found with this id' })
+                return
+            }
+            const post = postData.get({ plain: true })
 
-        res.render('single-post', {
-            post,
-            // loggedIn: req.session.loggedIn
+            res.render('single-post', {
+                post,
+                // loggedIn: req.session.loggedIn
+            })
         })
-    })
-    .catch(err => {
-        console.log(err)
-        res.status(500).json(err)
-    })
+        .catch(err => {
+            console.log(err)
+            res.status(500).json(err)
+        })
 })
 
 router.get('/login', (req, res) => {

@@ -1,13 +1,30 @@
+{{#if posts.length}}
 <section>
-    <form>
+  <h2>Your Posts</h2>
+  <ol>
+    {{#each posts as |post|}}
+    <li>
+      {{> post-info post}}
+      <a href="/dashboard/edit/{{post.id}}" class="edit-link">Edit post</a>
+    </li>
+    {{/each}}
+  </ol>
+</section>
+{{else}}
+<h1>You do not have any posts</h1>
+{{/if}}
+
+<section>
+    <form class="new-post-form">
         <div>
             <label for="dash-title">Title</label>
             <input type="text" id="post-title" name="post-title"/>
         </div>
         <div>
             <label for="post-text">Text</label>
-            <input id="post-text" name="post-text" />
+            <input type="text" id="post-text" name="post-text" />
         </div>
         <button type="submit" class="btn">Submit</button>
     </form>
 </section>
+<script src="/javascript/add-post.js"></script>
