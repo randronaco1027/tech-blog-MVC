@@ -1,25 +1,26 @@
-async function login(event) {
-    event.preventDefault()
-
-    const username = document.querySelector('#username').value.trim()
-    const password = document.querySelector('#password').value.trim()
-
+async function loginFormHandler(event) {
+    event.preventDefault();
+  
+    const username = document.querySelector('#username').value.trim();
+    const password = document.querySelector('#password').value.trim();
+  
     if (username && password) {
-        const loginConfirm = await fetch('/api/user/login', {
-            method: 'post',
-            body: JSON.stringify({
-                username, password
-            }),
-            headers: { 'Content-Type': 'application/json' }
-        })
-
-        if (loginConfirm.ok) {
-            document.location.replace('/dashboard/')
-        } else {
-            alert(loginConfirm.statusText)
-        }
+      const response = await fetch('/api/user/login', {
+        method: 'post',
+        body: JSON.stringify({
+          username,
+          password
+        }),
+        headers: { 'Content-Type': 'application/json' }
+      });
+  
+      if (response.ok) {
+        document.location.replace('/');
+      } else {
+        alert(response.statusText);
+      }
     }
-}
+  }
 
 async function signup(event) {
     event.preventDefault()
@@ -29,7 +30,7 @@ async function signup(event) {
     const email = document.querySelector('#newEmail').value.trim()
 
     if (username && password && email) {
-        const signupConfirm = await fetch('/api/user', {
+        const response = await fetch('/api/user', {
             method: 'post',
             body: JSON.stringify({
                 username, password, email
@@ -37,14 +38,14 @@ async function signup(event) {
             headers: { 'Content-Type': 'application/json' }
         })
 
-        if (signupConfirm.ok) {
-            document.location.replace('/dashboard/')
+        if (response.ok) {
+            document.location.replace('/')
         } else {
-            alert(signupConfirm.statusText)
+            alert(response.statusText)
         }
     }
 }
 
-document.querySelector('.login-form').addEventListener('submit', login)
+document.querySelector('.login-form').addEventListener('submit', loginFormHandler)
 
 document.querySelector('.signup-form').addEventListener('submit', signup)

@@ -1,13 +1,13 @@
 :root {
-    --primary-color: #93e5d8;
-    --secondary-color: #35210b;
+    --primary-color: #a8ebe0;
+    --secondary-color: #241608;
 }
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Courier New', Courier, monospace;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 body {
     background-color: var(--primary-color);
@@ -24,8 +24,7 @@ header h1 {
     font-size: 36px;
     color: var(--secondary-color);
     background-color: var(--primary-color);
-    padding: 5px;
-    border-radius: 5%;
+    padding: 10px;
 }
 
 header a {
@@ -107,8 +106,12 @@ form {
 .edit-link {
     background-color: var(--secondary-color);
     color: var(--primary-color);
-    
-    padding: 5px;
+    padding-right: 5px;
+    padding-left: 3px;
+}
+
+.post-list {
+    list-style: none
 }
 
 .your-posts {
