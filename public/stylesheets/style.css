@@ -146,3 +146,9 @@ form {
 .submit-form div {
     margin: 5px;
 }
+
+button {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    padding: 5px;
+}
