@@ -161,8 +161,15 @@ button {
     max-width: 50%;
 }
 
-.comment-form button {
+.comment-form button, .edit-post-form button {
     background-color: var(--secondary-color);
     color: var(--primary-color);
     margin-top: 10px;
+}
+
+.edit-post {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    margin-top: 10px;
+    padding: 5px;
 }
