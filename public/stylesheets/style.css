@@ -173,3 +173,7 @@ button {
     margin-top: 10px;
     padding: 5px;
 }
+
+.comment-timestamp {
+    font-size: 12px;
+}
