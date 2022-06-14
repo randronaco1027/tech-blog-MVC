@@ -9,7 +9,7 @@ router.get('/', (req, res) => {
         },
         {
             model: Comment,
-            attributes: ['id', 'comment_text', 'createdAt']
+            attributes: ['id', 'comment_text']
         }]
     })
         .then(userData => res.json(userData))
@@ -30,7 +30,7 @@ router.get('/:id', (req, res) => {
         },
         {
             model: Comment,
-            attributes: ['id', 'comment_text', 'createdAt']
+            attributes: ['id', 'comment_text']
         }]
     })
         .then(userData => res.json(userData))
